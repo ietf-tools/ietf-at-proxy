@@ -1,0 +1,20 @@
+---
+version: '3.3'
+services:
+  api:
+    build: ietf-at/.
+    container_name: api
+  ui:
+    build: ietf-at-ui/.
+    container_name: ui
+  proxy:
+    build: .
+    depends_on:
+      - api
+      - ui
+    links:
+      - api
+      - ui
+    ports:
+      - '80:80'
+      - '443:443'
