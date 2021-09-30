@@ -4,9 +4,11 @@ services:
   api:
     build: ietf-at/.
     container_name: api
+    restart: "unless-stopped"
   ui:
     build: ietf-at-ui/.
     container_name: ui
+    restart: "unless-stopped"
   proxy:
     build: .
     depends_on:
@@ -18,3 +20,4 @@ services:
     ports:
       - '80:80'
       - '443:443'
+    restart: "unless-stopped"
