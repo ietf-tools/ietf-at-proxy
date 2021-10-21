@@ -4,10 +4,20 @@ services:
   api:
     build: ietf-at/.
     container_name: api
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
     restart: "unless-stopped"
   ui:
     build: ietf-at-ui/.
     container_name: ui
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "3"
     restart: "unless-stopped"
   proxy:
     build: .
