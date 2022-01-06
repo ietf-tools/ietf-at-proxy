@@ -2,23 +2,26 @@
 version: '3.3'
 services:
   api:
-    build: ietf-at/.
+    image: ietf/at:v0.3.0
     container_name: api
     logging:
       driver: "syslog"
       options:
         syslog-address: "tcp://ietfa.amsl.com:514"
-    restart: "unless-stopped"
+    restart: unless-stopped
   ui:
-    build: ietf-at-ui/.
+    image: ietf/at-ui:v0.3.0
     container_name: ui
     logging:
       driver: "syslog"
       options:
         syslog-address: "tcp://ietfa.amsl.com:514"
-    restart: "unless-stopped"
+    restart: unless-stopped
   proxy:
-    build: .
+    image: jonasal/nginx-certbot:latest
+    restart: unless-stopped
+    env_file:
+      - ./at.env
     depends_on:
       - api
       - ui
@@ -26,6 +29,11 @@ services:
       - api
       - ui
     ports:
-      - '80:80'
-      - '443:443'
-    restart: "unless-stopped"
+      - 80:80
+      - 443:443
+    volumes:
+      - nginx_secrets:/etc/letsencrypt
+      - ./nginx-templates:/etc/nginx/templates/
+
+volumes:
+  nginx_secrets:
