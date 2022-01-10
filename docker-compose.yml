@@ -2,7 +2,7 @@
 version: '3.3'
 services:
   api:
-    image: ietf/at:v0.3.0
+    image: ietf/at:latest
     container_name: api
     logging:
       driver: "syslog"
@@ -10,7 +10,7 @@ services:
         syslog-address: "tcp://ietfa.amsl.com:514"
     restart: unless-stopped
   ui:
-    image: ietf/at-ui:v0.3.0
+    image: ietf/at-ui:latest
     container_name: ui
     logging:
       driver: "syslog"
