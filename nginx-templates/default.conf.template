@@ -39,6 +39,11 @@ server {
         proxy_pass http://api;
     }
 
+    location /diff {
+        rewrite ^/diff /api/iddiff?$args break;
+        proxy_set_header X-API-KEY '${DT_API_KEY}';
+        proxy_pass http://api;
+    }
 
     location /api/ {
         proxy_pass http://api;
