@@ -9,7 +9,7 @@ nginx and docker configuration files to serve
 * Update host port and datatracker API key on `at.env`.
 * Run the following command:
 ```
-docker-compose --env-file at.env up
+docker-compose --env-file at.env up -d
 ```
 
 ## Update running server
