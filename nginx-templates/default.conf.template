@@ -6,35 +6,22 @@ upstream ui {
 }
 
 server {
-    # Listen to port 443 on both IPv4 and IPv6.
-    listen 443 ssl default_server reuseport;
-    listen [::]:443 ssl default_server reuseport;
-
-    # Load the certificate files.
-    ssl_certificate         /etc/letsencrypt/live/test-name/fullchain.pem;
-    ssl_certificate_key     /etc/letsencrypt/live/test-name/privkey.pem;
-    ssl_trusted_certificate /etc/letsencrypt/live/test-name/chain.pem;
+    listen 80;
 
     server_name author-tools.ietf.org;
 
-    # Load the Diffie-Hellman parameter.
-    ssl_dhparam /etc/letsencrypt/dhparams/dhparam.pem;
-
     keepalive_timeout 70;
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_prefer_server_ciphers on;
-    ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
     client_max_body_size 5m;
     proxy_read_timeout 300;
 
     location /api2/ {
-        valid_referers  blocked  server_names  *.ietf.org;
+        valid_referers blocked server_names *.ietf.org;
 
         if ($invalid_referer) {
-            return   403;
+            return 403;
         }
 
-        rewrite ^/api2/(.*)  /api/$1 break;
+        rewrite ^/api2/(.*) /api/$1 break;
         proxy_set_header X-API-KEY '${DT_API_KEY}';
         proxy_pass http://api;
     }
@@ -52,6 +39,6 @@ server {
     location / {
         proxy_pass http://ui;
 
-        rewrite ^/iddiff  /iddiff.html break;
+        rewrite ^/iddiff /iddiff.html break;
     }
 }

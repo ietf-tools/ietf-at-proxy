@@ -18,7 +18,7 @@ services:
         syslog-address: "tcp://ietfa.amsl.com:514"
     restart: unless-stopped
   proxy:
-    image: jonasal/nginx-certbot:latest
+    image: nginx:latest
     restart: unless-stopped
     env_file:
       - ./at.env
@@ -29,11 +29,6 @@ services:
       - api
       - ui
     ports:
-      - 80:80
-      - 443:443
+      - ${AT_PORT}:80
     volumes:
-      - nginx_secrets:/etc/letsencrypt
       - ./nginx-templates:/etc/nginx/templates/
-
-volumes:
-  nginx_secrets:
