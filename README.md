@@ -18,12 +18,8 @@ The following command will get the latest ietf-at and ietf-at-ui images and
 rebuild the service.
 
 ```
-docker-compose --env-file at.env up --force-recreate --build -d
-```
-
-## Pre-fetch required images
-```
+docker pull nginx:latest
 docker pull ghcr.io/ietf-tools/ietf-at:latest
 docker pull ghcr.io/ietf-tools/ietf-at-ui:latest
-docker pull nginx:latest
+docker-compose --env-file at.env up --force-recreate --build -d
 ```
