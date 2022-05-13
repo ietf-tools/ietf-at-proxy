@@ -36,9 +36,13 @@ server {
         proxy_pass http://api;
     }
 
+    location /iddiff/ {
+        return 301 https://$server_name/iddiff;
+    }
+
     location / {
         proxy_pass http://ui;
 
-        rewrite ^/iddiff /iddiff.html break;
+        rewrite ^/iddiff$ /iddiff.html break;
     }
 }
