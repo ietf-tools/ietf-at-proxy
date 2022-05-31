@@ -40,14 +40,9 @@ server {
         return 301 https://$server_name/iddiff;
     }
 
-    location /idnits/ {
-        return 301 https://$server_name/idnits;
-    }
-
     location / {
         proxy_pass http://ui;
 
         rewrite ^/iddiff$ /iddiff.html break;
-        rewrite ^/idnits$ /idnits.html break;
     }
 }
