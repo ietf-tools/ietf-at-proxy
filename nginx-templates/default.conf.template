@@ -44,5 +44,6 @@ server {
         proxy_pass http://ui;
 
         rewrite ^/iddiff$ /iddiff.html break;
+        rewrite ^/abnf$ /abnf.html break;
     }
 }
