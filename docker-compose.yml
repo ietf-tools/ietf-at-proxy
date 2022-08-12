@@ -4,6 +4,10 @@ services:
   api:
     image: ghcr.io/ietf-tools/ietf-at:latest
     container_name: api
+    environment:
+      SENTRY_DSN: ${SENTRY_DSN}
+    env_file:
+      - ./at.env
     logging:
       driver: "syslog"
       options:
