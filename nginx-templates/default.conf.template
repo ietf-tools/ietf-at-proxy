@@ -45,5 +45,6 @@ server {
 
         rewrite ^/iddiff$ /iddiff.html break;
         rewrite ^/abnf$ /abnf.html break;
+        rewrite ^/idnits$ /idnits.html break;
     }
 }
