@@ -6,6 +6,7 @@ services:
     container_name: api
     environment:
       SENTRY_DSN: ${SENTRY_DSN}
+      SITE_URL: ${SITE_URL}
     env_file:
       - ./at.env
     logging:
