@@ -46,6 +46,9 @@ server {
         if ($request_uri ~ ^/iddiff\?(.*)) {
             rewrite ^ /api/iddiff?$args last;
         }
+        if ($request_uri ~ ^/idnits\?(.*)) {
+            rewrite ^ /api/idnits?$args last;
+        }
         rewrite ^/iddiff$ /iddiff.html break;
         rewrite ^/abnf$ /abnf.html break;
         rewrite ^/idnits$ /idnits.html break;
