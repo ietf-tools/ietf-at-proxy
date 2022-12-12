@@ -53,5 +53,6 @@ server {
         rewrite ^/abnf$ /abnf.html break;
         rewrite ^/idnits$ /idnits.html break;
         rewrite ^/svgcheck$ /svgcheck.html break;
+        rewrite ^/rfcdiff$ /rfcdiff.html break;
     }
 }
