@@ -1,5 +1,5 @@
 ---
-version: '3.3'
+version: '2.4'
 services:
   api:
     image: ghcr.io/ietf-tools/ietf-at:latest
@@ -14,11 +14,7 @@ services:
       options:
         syslog-address: "tcp://ietfa.amsl.com:514"
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.80'
-          memory: '1G'
+    mem_limit: 4gb
   ui:
     image: ghcr.io/ietf-tools/ietf-at-ui:latest
     container_name: ui
@@ -27,11 +23,7 @@ services:
       options:
         syslog-address: "tcp://ietfa.amsl.com:514"
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: '100M'
+    mem_limit: 500mb
   proxy:
     image: nginx:latest
     restart: unless-stopped
@@ -47,8 +39,4 @@ services:
       - ${AT_PORT}:80
     volumes:
       - ./nginx-templates:/etc/nginx/templates/
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: '100M'
+    mem_limit: 500mb
