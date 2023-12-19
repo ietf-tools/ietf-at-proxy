@@ -51,7 +51,7 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           envFrom:
-            -configMapRef:
+            - configMapRef:
               name: ietf-at-proxy-env-configmap
           {{- with .Values.volumeMounts }}
           volumeMounts:
