@@ -98,7 +98,7 @@ tolerations: []
 affinity: {}
 
 env:
-  DT_API_KEY: apikey
-  AT_PORT: 8001
-  SENTRY_DSN: https://sentry.dsn/
-  SITE_URL: https://author-tools.ietf.org
+  DT_API_KEY: "apikey"
+  AT_PORT: "8001"
+  SENTRY_DSN: "https://sentry.dsn/"
+  SITE_URL: "https://author-tools.ietf.org"
