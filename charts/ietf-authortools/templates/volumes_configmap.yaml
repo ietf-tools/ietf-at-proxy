@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: templates
+data:
+{{ (.Files.Glob "nginx-templates/*").AsConfig | indent 2 }}
+

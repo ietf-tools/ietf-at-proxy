@@ -1,2 +1,5 @@
 # env file
 at.env
+
+# NGinX templates copied in to the helm chart from the root level
+charts/ietf-authortools/nginx-templates/
