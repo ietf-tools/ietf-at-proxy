@@ -28,7 +28,7 @@ jobs:
 
       - name: Copy nginx templates
         run: |
-          cp -rp nginx-templates charts/ietf-at-proxy/nginx-templates
+          cp -rp nginx-templates charts/ietf-authortools/nginx-templates
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
