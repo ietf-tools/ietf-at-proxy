@@ -31,7 +31,7 @@ jobs:
       - name: Copy nginx templates
         run: |
           mkdir charts/ietf-authortools/nginx-templates
-          sed -e s/server \([a-zA-Z0-9]*\);/server at-\1.at.svc.cluster.local;/g' \
+          sed -e 's/server \([a-zA-Z0-9]*\);/server at-\1.at.svc.cluster.local;/g' \
               nginx-templates/default.conf.template \
               ietf-authortools/nginx-templates/default.conf.template
 
