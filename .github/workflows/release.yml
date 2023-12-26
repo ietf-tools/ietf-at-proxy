@@ -30,7 +30,10 @@ jobs:
 
       - name: Copy nginx templates
         run: |
-          cp -rp nginx-templates charts/ietf-authortools/nginx-templates
+          mkdir charts/ietf-authortools/nginx-templates
+          sed -e s/server \([a-zA-Z0-9]*\);/server at-\1.at.svc.cluster.local;/g' \
+              nginx-templates/default.conf.template \
+              ietf-authortools/nginx-templates/default.conf.template
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
