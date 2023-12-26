@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "proxy.name" -}}
+{{- define "ietf-authortools.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "proxy.fullname" -}}
+{{- define "ietf-authortools.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "proxy.chart" -}}
+{{- define "ietf-authortools.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "proxy.labels" -}}
-helm.sh/chart: {{ include "proxy.chart" . }}
-{{ include "proxy.selectorLabels" . }}
+{{- define "ietf-authortools.labels" -}}
+helm.sh/chart: {{ include "ietf-authortools.chart" . }}
+{{ include "ietf-authortools.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "proxy.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "proxy.name" . }}
+{{- define "ietf-authortools.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "ietf-authortools.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "proxy.serviceAccountName" -}}
+{{- define "ietf-authortools.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "proxy.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "ietf-authortools.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

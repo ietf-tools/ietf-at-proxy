@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "proxy.fullname" . }}
+  name: {{ include "ietf-authortools.fullname" . }}
   labels:
-    {{- include "proxy.labels" . | nindent 4 }}
+    {{- include "ietf-authortools.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "proxy.fullname" . }}
+    name: {{ include "ietf-authortools.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
