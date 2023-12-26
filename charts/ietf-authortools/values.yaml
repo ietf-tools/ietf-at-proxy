@@ -109,6 +109,7 @@ env:
   DT_API_KEY: "apikey"
   AT_PORT: "8001"
   SENTRY_DSN: "https://sentry.dsn/"
+  SITE_HOSTNAME: "author-tools.ietf.org"
   SITE_URL: "https://author-tools.ietf.org"
 
 api:

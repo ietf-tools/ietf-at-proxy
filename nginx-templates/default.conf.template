@@ -8,14 +8,14 @@ upstream ui {
 server {
     listen 80;
 
-    server_name author-tools.ietf.org;
+    server_name ${SITE_HOSTNAME};
 
     keepalive_timeout 70;
     client_max_body_size 5m;
     proxy_read_timeout 300;
 
     location /api2/ {
-        valid_referers blocked server_names *.ietf.org;
+        valid_referers blocked server_names *.ietf.org ~${SITE_HOSTNAME}\$;
 
         if ($invalid_referer) {
             return 403;
