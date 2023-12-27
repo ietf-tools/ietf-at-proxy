@@ -69,7 +69,7 @@ resources:
 #     memory: 128Mi
    requests:
      memory: 4Gi
-     cpu: 2
+     cpu: 8
 
 autoscaling:
   enabled: false
