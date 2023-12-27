@@ -31,7 +31,7 @@ jobs:
       - name: Copy nginx templates
         run: |
           mkdir -p charts/ietf-authortools/nginx-templates
-          sed -e 's/server \([a-zA-Z0-9]*\);/server at-\1.at.svc.cluster.local;/g' \
+          sed -e 's/server \([a-zA-Z0-9]*\);/server ietf-authortools-\1.at.svc.cluster.local;/g' \
               nginx-templates/default.conf.template > charts/ietf-authortools/nginx-templates/default.conf.template
 
       - name: Run chart-releaser
