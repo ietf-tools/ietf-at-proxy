@@ -101,4 +101,4 @@ env:
   DT_API_KEY: "apikey"
   AT_PORT: "80"
   SENTRY_DSN: ""
-  SITE_URL: "https://authortools.home.offcenter.org"
+  SITE_URL: "https://author-tools.ietf.org"
