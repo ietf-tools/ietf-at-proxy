@@ -1,5 +1,7 @@
 # ietf-at-proxy
 
+**Archived:** This project is now part of [IETF Author Tools](https://github.com/ietf-tools/ietf-at) repository.
+
 nginx and docker configuration files to serve
 [Author Tools](https://author-tools.ietf.org/).
 
